@@ -1,5 +1,7 @@
-QSO collector system.
-=====================
+QSO collector system
+====================
+
+See https://www.la1k.no/?p=5142 for description.
 
 n1mm_listener.py
 ----------------
