@@ -117,12 +117,9 @@ CREATE TRIGGER delete_qso
 
 -- View over deleted QSOs.
 CREATE VIEW deleted_qsos AS
-    SELECT qsoid FROM
-    (SELECT f.qsoid,
-        timestamp,
-        call
+    SELECT f.qsoid
     FROM
         (SELECT qsos_raw.qsoid, MAX(modified) FROM qsos_raw GROUP BY qsoid) AS f
-        INNER JOIN
-        qsos_raw ON f.qsoid = qsos_raw.qsoid AND f.max = qsos_raw.modified) AS fjas
+    INNER JOIN
+        qsos_raw ON f.qsoid = qsos_raw.qsoid AND f.max = qsos_raw.modified
     WHERE call IS NULL AND timestamp IS NULL;
